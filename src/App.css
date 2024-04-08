@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+#puppy-details {
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+#puppy-list {
+  border: 5px solid black
+}

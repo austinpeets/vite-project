@@ -4,19 +4,36 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import {puppyList} from './data.js'
 
-
 function App() {
   const [count, setCount] = useState(0)
   const [puppies, setPuppies] = useState(puppyList)
-  console.log(puppies)
+  const [featPupId, setFeatPupId] = useState(null)
+  const featuredPup = puppies.find((pup)=> pup.id === featPupId)
   return (
     <>
-      <div className="App">
+      <div id="puppy-list" className="App">
         {
           puppies.map((puppy) => {
-            return <p key={puppy.id}>{puppy.name}</p>
+            //console.log("puppy id:", puppy.id)
+            
+            console.log(featuredPup)
+            return <p onClick ={()=> {
+              setFeatPupId(puppy.id)
+            }} key={puppy.id}>{puppy.name}</p>
           })
         }
+        { featPupId && (
+          <div id="puppy-details">
+            <h2>{featuredPup.name}</h2>
+            <ul>
+              <li>Age: {featuredPup.age}</li>
+              <li>Email: {featuredPup.email}</li>
+            </ul>
+          </div>
+          )}
+        { featPupId && <p>{ featPupId }</p>}
+
+
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
