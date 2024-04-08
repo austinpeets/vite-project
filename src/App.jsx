@@ -2,13 +2,21 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {puppyList} from './data.js'
+
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const [puppies, setPuppies] = useState(puppyList)
+  console.log(puppies)
   return (
     <>
-      <div>
+      <div className="App">
+        {
+          puppies.map((puppy) => {
+            return <p key={puppy.id}>{puppy.name}</p>
+          })
+        }
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
